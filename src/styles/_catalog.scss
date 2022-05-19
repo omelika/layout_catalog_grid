@@ -1,22 +1,25 @@
-.catalog {
-  display: flex;
-  flex-wrap: wrap;
+@mixin repeat ($column, $screen-width) {
+  @media (min-width: $screen-width) {
+    grid-template-columns: repeat($column, 200px);
+  }
+}
 
-  max-width: 944px;
-  margin: 0 auto;
+.catalog {
+  display: grid;
+  gap: 48px;
+  justify-content: center;
+
+  @include repeat(2, 488px);
+  @include repeat(3, 768px);
+  @include repeat(4, 1024px);
 
   &__card {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
     width: 200px;
     height: 300px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 48px;
-  }
-
-  &__card:not(:nth-child(4n)) {
-    margin-right: 48px;
   }
 }
