@@ -1,0 +1,25 @@
+@mixin repeat ($column, $screen-width) {
+  @media (min-width: $screen-width) {
+    grid-template-columns: repeat($column, 200px);
+  }
+}
+
+.catalog {
+  display: grid;
+  gap: 48px;
+  justify-content: center;
+
+  @include repeat(2, 488px);
+  @include repeat(3, 768px);
+  @include repeat(4, 1024px);
+
+  &__card {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+}
